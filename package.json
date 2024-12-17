@@ -1,0 +1,21 @@
+{
+  "name": "cypressdemoframework",
+  "version": "1.0.0",
+  "description": "Cypress Demo Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "runHeadless": "npx cypress run",
+    "runHeaded": "npx cypress run --headed",
+    "dashboard-run": "npx cypress run --record --key c79521b6-a017-4fac-b229-66128de04f87"
+  },
+  "author": "Vaibhav Jain",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.16.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-real-events": "^1.13.0",
+    "exceljs": "^4.4.0",
+    "mochawesome": "^7.1.3"
+  }
+}

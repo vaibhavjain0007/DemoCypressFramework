@@ -1,0 +1,9 @@
+{
+    "wrongUsername" : "test@123@gmail.com",
+    "wrongMobNum": "1232132323",
+    "wrongPassword" : "test@123",
+    "blankUsernameErrMsg" : "Enter your email or mobile phone number",
+    "blankPasswordErrMsg": "Enter your password",
+    "wrongUsernameErrMsg" : "We cannot find an account with that mobile number",
+    "wrongPasswordErrMsg" : "Your password is incorrect"
+}

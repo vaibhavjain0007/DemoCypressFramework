@@ -1,0 +1,162 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-12-17T07:21:57.223Z",
+    "end": "2024-12-17T07:22:47.019Z",
+    "duration": 49796,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "065fe100-e80a-47a7-8d68-765f96af7fa7",
+      "title": "",
+      "fullFile": "cypress\\e2e\\NegativeSignInTest.js",
+      "file": "cypress\\e2e\\NegativeSignInTest.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "04b9b9b5-2d67-4b26-a4cf-e88f2346bfa5",
+          "title": "Negative SignIn Page Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "verify the error message for blank username",
+              "fullTitle": "Negative SignIn Page Test verify the error message for blank username",
+              "timedOut": null,
+              "duration": 14210,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.clickContinueBtn();\ncy.log(data);\nloginPage.verifyBlankUserIDErrMsg(data.blankUsernameErrMsg);",
+              "err": {},
+              "uuid": "8cb62080-6adf-4371-805f-f473bf945f6f",
+              "parentUUID": "04b9b9b5-2d67-4b26-a4cf-e88f2346bfa5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify the error message for blank password",
+              "fullTitle": "Negative SignIn Page Test verify the error message for blank password",
+              "timedOut": null,
+              "duration": 15009,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.enterUserName(Cypress.env('username'));\nloginPage.clickContinueBtn();\nloginPage.clickSignInBtn();\nloginPage.verifyBlankPasswordErrMsg(data.blankPasswordErrMsg);",
+              "err": {},
+              "uuid": "b4d51e40-49cb-410f-ac5b-d6b99c302c10",
+              "parentUUID": "04b9b9b5-2d67-4b26-a4cf-e88f2346bfa5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify the error message for wrong username",
+              "fullTitle": "Negative SignIn Page Test verify the error message for wrong username",
+              "timedOut": null,
+              "duration": 7562,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.enterUserName(data.wrongMobNum);\nloginPage.clickContinueBtn();\nloginPage.verifyWrongUsernameOrPasswordErrMsg(data.wrongUsernameErrMsg);",
+              "err": {},
+              "uuid": "bde8641c-8fd0-4e14-b9aa-5bf7d0b0212e",
+              "parentUUID": "04b9b9b5-2d67-4b26-a4cf-e88f2346bfa5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "verify the error message for wrong password",
+              "fullTitle": "Negative SignIn Page Test verify the error message for wrong password",
+              "timedOut": null,
+              "duration": 10775,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "loginPage.enterUserName(Cypress.env('username'));\nloginPage.clickContinueBtn();\nloginPage.enterPassword(data.wrongPassword);\nloginPage.clickSignInBtn();\nloginPage.verifyWrongUsernameOrPasswordErrMsg(data.wrongPasswordErrMsg);",
+              "err": {},
+              "uuid": "0a389c84-f896-46aa-b4cd-79871e146329",
+              "parentUUID": "04b9b9b5-2d67-4b26-a4cf-e88f2346bfa5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8cb62080-6adf-4371-805f-f473bf945f6f",
+            "b4d51e40-49cb-410f-ac5b-d6b99c302c10",
+            "bde8641c-8fd0-4e14-b9aa-5bf7d0b0212e",
+            "0a389c84-f896-46aa-b4cd-79871e146329"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 47556,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress\\reports\\html\\.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

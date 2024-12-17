@@ -1,0 +1,11 @@
+{
+    "fullName": "Vaibhav Test",
+    "phoneNumber": "9100000000",
+    "pinCode": "465445",
+    "address1": "Street Address 1",
+    "address2": "Street Address 2",
+    "city": "Nalkheda",
+    "state": "MADHYA PRADESH",
+    "addressMsgAddedSuccessfully" : "Address saved",
+    "deletedAddressSuccessMsg" : "Address deleted"
+}

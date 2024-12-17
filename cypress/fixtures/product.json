@@ -1,0 +1,15 @@
+{
+    "searchProductType" : "Mobile",
+    "minimumAmount" : 12000,
+    "maximumAmount" : 18000,
+    "cartSuccessMsg" : "Added to Cart",
+    "itemAddedSuccessMsg": "Item Added",
+    "deliveryAddressMsg" : "Select a delivery address",
+    "cartDeleteSuccessMsg" : "Your Amazon Cart is empty.",
+    "wishListProduct" : "Apple iPhone 15",
+    "wishListDeletedMsg" : "Deleted",
+    "noProductFoundMsg" : "No Prodct Found to delete first add the Prodct then delete",
+    "name":"iPhone 15",
+    "brandName":"Samsung",
+    "searchProduct":"smartphone"
+}
