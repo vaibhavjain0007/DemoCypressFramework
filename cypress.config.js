@@ -2,8 +2,8 @@ const { defineConfig } = require("cypress");
 const ExcelJS = require('exceljs');
 
 module.exports = defineConfig({
+  projectId: 'seod27',
   e2e: {
-    projectId: "fcwpbs",
     baseUrl: 'https://www.amazon.in',
     reporter: 'cypress-mochawesome-reporter', // for html reports
     setupNodeEvents(on, config) {

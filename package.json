@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "runHeadless": "npx cypress run",
     "runHeaded": "npx cypress run --headed",
-    "dashboard-run": "npx cypress run --record --key c79521b6-a017-4fac-b229-66128de04f87"
+    "dashboard-run": "npx cypress run --record --key f78f1bc4-8713-49ff-a6df-4c8178b94970"
   },
   "author": "Vaibhav Jain",
   "license": "ISC",
