@@ -1,14 +1,10 @@
 import LoginPage from "../support/pages/LoginPage";
 
 describe('Test Suite 1', () => {
-
-    // let data;
     const loginPage = new LoginPage()
+
     before('before all', () => {
         cy.login(Cypress.env('username'), Cypress.env('password'))
-        // cy.fixture('testData').then(data => {
-        //     this.data = data;
-        // })
     })
 
     beforeEach('login', () => {
@@ -38,14 +34,12 @@ describe('Test Suite 1', () => {
             .click()
     })
 
-    it.only ('select brand', () => {
+    it.only ('search product, filter by brand, add to cart, validate cart', () => {
         cy.get('#nav-xshop-container a').contains('Mobiles').realClick()
         cy.contains('Brands').parent().siblings('ul').find('li').each(($el, index, $list) => {
-            cy.log($el.text())
-
             /*
-                checking checkboxes --> check will only check if the checkbox is not already checked 
-                but if we use click then it will uncheck the checked one and vice versa
+             *  checking checkboxes --> check will only check if the checkbox is not already checked 
+             *  but if we use click then it will uncheck the checked one and vice versa
             */
             if ($el.text().includes('Vivo')) {
                 cy.log('Vivo')
@@ -60,39 +54,15 @@ describe('Test Suite 1', () => {
                 return
             }
         })
-        // cy.get('.a-changeover-inner').should('have.text', data.itemAddedSuccessMsg)
         cy.get('.a-changeover-inner', {timeout : 8000}).should('have.text', 'Item Added')
         cy.get('.a-changeover-inner').should('be.visible')
-
-        // Click multiple Add to cart button (all matched)
-        // cy.get("[id^='a-autoid'][type='button']").click({multiple:true})
 
         // Validate cart
         cy.get('#nav-cart').click()
         cy.get('.a-size-extra-large').should('include.text', 'Shopping Cart')
-
-        // alter quantity
-        // cy.get('#quantity').select('2', { force: true })
-        // cy.get('.a-dropdown-prompt').should('have.text', '2')
-
-        // cy.wait(2000)
-        // cy.pause()
         cy.get('[name=proceedToRetailCheckout]').click()
-        // loginPage.enterUserName(Cypress.env('username'))
-        // loginPage.clickContinueBtn()
-        // loginPage.enterPassword(Cypress.env('password'))
-        // loginPage.clickSignInBtn()
-
-        // Custom command - getMatchedElement
         cy.getMatchedElement('[data-action=select-address-in-list]', '192').find('input').check().should('be.checked')
         cy.get('[data-testid=Address_selectShipToThisAddress]').click()
-        // cy.wait(8000)
-        // cy.getMatchedElement('[data-a-input-name=ppw-instrumentRowSelection]', 'Cash on Delivery/Pay on Delivery').should('not.be.disabled')
-    })
-
-    it.only ('cross origin request', () => {
-        cy.visit('https://www.flipkart.in/').wait(1000)
-        cy.visit('https://rahulshettyacademy.com/AutomationPractice/');
     })
 
     afterEach('after each', () => {

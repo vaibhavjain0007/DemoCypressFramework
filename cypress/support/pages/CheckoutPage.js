@@ -17,8 +17,8 @@ const selectors = {
         }
     }
 };
-export class CheckoutPage {
 
+export class CheckoutPage {
     fillAddressDetails(address) {
         cy.get(selectors.checkout.addressForm.addNewAddress).click()
         cy.get(selectors.checkout.addressForm.fullName).type(address.fullName);
@@ -27,10 +27,11 @@ export class CheckoutPage {
         cy.get(selectors.checkout.addressForm.addressLine1).type(address.address1);
         cy.get(selectors.checkout.addressForm.addressLine2).type(address.address2);
         cy.get(selectors.checkout.addressForm.city).type(address.city);
-        cy.get(selectors.checkout.addressForm.state).select(address.state, { force:true });
+        cy.get(selectors.checkout.addressForm.state).select(address.state, { force: true });
         return cy.get(selectors.checkout.addressForm.useAddressButton).click();
     }
+
     validateAddress() {
-        return cy.get(selectors.checkout.addressValidation.addressChangebutton, { timeout: 10000}).should('exist');
+        return cy.get(selectors.checkout.addressValidation.addressChangebutton, { timeout: 10000 }).should('exist');
     }
 }

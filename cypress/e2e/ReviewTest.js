@@ -28,12 +28,10 @@ describe('Amazon Product Review and Rating', () => {
         // Rate the product
         reviewPage.rateProduct(5); // 5-star rating
 
-        // Write a review
+        // Write a review and submit
         reviewPage.writeReview(reviewTitle, reviewText);
-
-        // Submit the review
         reviewPage.submitReview();
-
+        
         // Validate the review was submitted
         reviewPage.validateReviewSubmission();
     });

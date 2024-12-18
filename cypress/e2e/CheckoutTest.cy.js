@@ -1,8 +1,4 @@
-import { CartPage } from "../support/pages/CartPage";
-import { CheckoutPage } from "../support/pages/CheckoutPage";
-import LoginPage from "../support/pages/LoginPage";
-import { ProductPage } from "../support/pages/ProductPage";
-import { ProductSearchPage } from "../support/pages/ProductSearchPage";
+import { CartPage, CheckoutPage, LoginPage, ProductPage, ProductSearchPage } from "../support/pages/*";
 
 const productSearchPage = new ProductSearchPage();
 const productPage = new ProductPage();
@@ -29,14 +25,11 @@ describe('Amazon.in Product Search, Add to Cart and Checkout Test', () => {
 
     it('Search for a product, add it to the cart, and proceed to checkout', () => {
         // Search for the product
-        cy.log(product, address)
         productSearchPage.searchProduct(product.name);
         productSearchPage.clickSearchButton();
 
-        // Select the specific product
+        // Select the specific product and add to cart
         productSearchPage.selectProduct(product.name);
-
-        // Add the product to the cart
         productPage.addToCart();
 
         // Go to the cart and verify the product is added

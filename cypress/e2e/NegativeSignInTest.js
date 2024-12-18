@@ -1,15 +1,14 @@
-import HomePage from "../support/pages/HomePage";
-import LoginPage from "../support/pages/LoginPage";
+import { HomePage, LoginPage } from "../support/pages/*";
 
 describe('Negative SignIn Page Test', () => {
     const loginPage = new LoginPage()
     const homePage = new HomePage()
 
-    let data;
+    let errors;
 
     before(() => {
         cy.fixture("signInErrMsgs").then((fixtureData) => {
-            data = fixtureData;
+            errors = fixtureData;
         });
     });
 
@@ -20,28 +19,28 @@ describe('Negative SignIn Page Test', () => {
 
     it('verify the error message for blank username', { retries: 0 }, () => {
         loginPage.clickContinueBtn();
-        cy.log(data)
-        loginPage.verifyBlankUserIDErrMsg(data.blankUsernameErrMsg);
+        cy.log(errors)
+        loginPage.verifyBlankUserIDErrMsg(errors.blankUsernameErrMsg);
     });
 
     it('verify the error message for blank password', () => {
         loginPage.enterUserName(Cypress.env('username'));
         loginPage.clickContinueBtn();
         loginPage.clickSignInBtn();
-        loginPage.verifyBlankPasswordErrMsg(data.blankPasswordErrMsg);
+        loginPage.verifyBlankPasswordErrMsg(errors.blankPasswordErrMsg);
     });
 
     it('verify the error message for wrong username', () => {
-        loginPage.enterUserName(data.wrongMobNum);
+        loginPage.enterUserName(errors.wrongMobNum);
         loginPage.clickContinueBtn();
-        loginPage.verifyWrongUsernameOrPasswordErrMsg(data.wrongUsernameErrMsg);
+        loginPage.verifyWrongUsernameOrPasswordErrMsg(errors.wrongUsernameErrMsg);
     });
 
     it('verify the error message for wrong password', () => {
         loginPage.enterUserName(Cypress.env('username'));
         loginPage.clickContinueBtn();
-        loginPage.enterPassword(data.wrongPassword);
+        loginPage.enterPassword(errors.wrongPassword);
         loginPage.clickSignInBtn();
-        loginPage.verifyWrongUsernameOrPasswordErrMsg(data.wrongPasswordErrMsg);
+        loginPage.verifyWrongUsernameOrPasswordErrMsg(errors.wrongPasswordErrMsg);
     });
 });

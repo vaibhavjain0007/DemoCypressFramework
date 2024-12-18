@@ -33,10 +33,6 @@ class LoginPage {
     }
 
     // Actions
-    visit() {
-        cy.visit('/')
-    }
-
     enterUserName(username) {
         this.userName.type(username)
     }
