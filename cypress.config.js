@@ -39,7 +39,10 @@ module.exports = defineConfig({
       runMode: 1, // Number of retries when running tests (default is 0)
       openMode: 0, // Number of retries in interactive mode (default is 0)
     },
-    specPattern: 'cypress/e2e/*.js', // include .js files
+    specPattern: [
+      'cypress/e2e/*.js',
+      'cypress/e2e/APITesting/*.js'
+    ], // include .js files
     excludeSpecPattern: [
       'cypress/e2e/*.*.js',
     ] // Exclude .cy.js and same pattern files

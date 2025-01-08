@@ -34,7 +34,7 @@ describe('Test Suite 1', () => {
             .click()
     })
 
-    it.only ('search product, filter by brand, add to cart, validate cart', () => {
+    it ('search product, filter by brand, add to cart, validate cart', () => {
         cy.get('#nav-xshop-container a').contains('Mobiles').realClick()
         cy.contains('Brands').parent().siblings('ul').find('li').each(($el, index, $list) => {
             /*
