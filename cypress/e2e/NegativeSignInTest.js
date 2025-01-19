@@ -1,8 +1,10 @@
-import { HomePage, LoginPage } from "../support/pages";
+import { HomePage } from "../support/pages/HomePage";
+import { LoginPage } from "../support/pages/LoginPage";
+
 
 describe('Negative SignIn Page Test', () => {
-    const loginPage = new LoginPage();
-    const homePage = new HomePage();
+    const loginPage = new LoginPage;
+    const homePage = new HomePage;
 
     let errors;
 

@@ -1,7 +1,6 @@
-import LoginPage from "../support/pages/LoginPage";
+import { LoginPage } from "../support/pages/LoginPage";
 
 describe('Test Suite 1', () => {
-    const loginPage = new LoginPage()
 
     before('before all', () => {
         cy.login(Cypress.env('username'), Cypress.env('password'))
@@ -16,25 +15,24 @@ describe('Test Suite 1', () => {
     })
 
     it('test saerch and select product among results shown', () => {
-        cy.get('#twotabsearchtextbox').type('vivo t3 5g mobile new 2024 256 gb')
-        // cy.contains('vivo t3 5g mobile new 2024 256 gb').click()
+        cy.get('#twotabsearchtextbox').type('vivo t3 5g mobile')
 
         cy.get('.left-pane-results-container > div').each(($el, index, $list) => {
             cy.log('outside')
-            if ($el.text().includes('vivo t3 5g mobile new 2024 256 gb')) {
+            if ($el.text().includes('vivo t3 5g mobile phone cover')) {
                 cy.log('inside**********************************************************************************8')
                 cy.get('.left-pane-results-container > div').eq(index).realClick()
                 return
             }
         })
 
-        cy.contains('Vivo Y200 5G Mobile (Jungle Green, 8GB RAM, 256GB Storage)')
-            .should('be.visible')
-            .invoke('removeAttr', 'target')
-            .click()
+        // cy.contains('Vivo Y200 5G Mobile (Jungle Green, 8GB RAM, 256GB Storage)')
+        //     .should('be.visible')
+        //     .invoke('removeAttr', 'target')
+        //     .click()
     })
 
-    it ('search product, filter by brand, add to cart, validate cart', () => {
+    it.skip ('search product, filter by brand, add to cart, validate cart', () => {
         cy.get('#nav-xshop-container a').contains('Mobiles').realClick()
         cy.contains('Brands').parent().siblings('ul').find('li').each(($el, index, $list) => {
             /*

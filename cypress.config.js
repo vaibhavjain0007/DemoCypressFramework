@@ -37,15 +37,12 @@ module.exports = defineConfig({
     // Enable retries for failed tests
     retries: {
       runMode: 1, // Number of retries when running tests (default is 0)
-      openMode: 0, // Number of retries in interactive mode (default is 0)
+      openMode: 0, // Number of retries in interactive mode (default is 0) // cypress runner
     },
     specPattern: [
       'cypress/e2e/*.js',
       'cypress/e2e/APITesting/*.js'
     ], // include .js files
-    excludeSpecPattern: [
-      'cypress/e2e/*.*.js',
-    ] // Exclude .cy.js and same pattern files
   },
   env: {
     "username": '9685075089',

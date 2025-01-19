@@ -26,6 +26,7 @@ export class AccountAndSubaccountPage {
     }
 
     clickWriteReviewButton() {
+        cy.pause()
         return cy.get(selectors.orders.writeReviewButton).first().click();
     }
 
@@ -40,6 +41,7 @@ export class AccountAndSubaccountPage {
     selectTimeFilter(timeFilter) {
         cy.get('.a-popover-inner ul li').each(($el, index, $list) => {
             if ($el.text().includes(timeFilter)) {
+                cy.pause()
                 return cy.wrap($el).click()
             }
         })
@@ -58,8 +60,8 @@ export class AccountAndSubaccountPage {
         return cy.get(selectors.review.submitButton).click();
     }
 
-    validateReviewSubmission() {
+    validateReviewSubmission(successMsg) {
         return cy.get(selectors.review.submittedReview)
-            .should('contain', "Review submitted - Thank you!");
+            .should('contain', successMsg);
     }
 }

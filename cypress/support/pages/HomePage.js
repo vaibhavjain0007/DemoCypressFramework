@@ -1,33 +1,23 @@
-class HomePage {
-    // Locators
-    get signIn() {
-        return cy.get('#nav-link-accountList')
-    }
+const selectors = {
+    signIn: '#nav-link-accountList',
+    orders: '#nav-orders',
+    search: '#twotabsearchtextbox'
+}
 
-    get orders() {
-        return cy.get('#nav-orders')
-    }
-
-    get search() {
-        return cy.get('#twotabsearchtextbox')
-    }
-
-    // Actions
+export class HomePage {
     clickSignIn() {
-        this.signIn.click()
+        cy.get(selectors.signIn).click()
     }
 
     searchProduct(productName) {
-        this.search.type(productName)
+        cy.get(selectors.search).type(productName)
     }
 
     enterOnSearch() {
-        this.search.type('{enter}')
+        cy.get(selectors.search).type('{enter}')
     }
 
     navigateToOrders() {
-        this.orders().click()
+        cy.get(selectors.orders).click()
     }
 }
-
-export default HomePage;

@@ -15,6 +15,6 @@ export class CartPage {
     }
 
     verifyProductAdded(productName) {
-        return cy.get(selectors.verifyProductAdded.productTitle).should('contain', productName);
+        return cy.get(selectors.verifyProductAdded.productTitle).should('contain', productName.toUpperCase());
     }
 }

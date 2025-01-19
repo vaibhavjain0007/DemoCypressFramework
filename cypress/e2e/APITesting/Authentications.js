@@ -17,7 +17,7 @@ describe ('authentications', () => {
     it ('basic digest authentication', () => {
         cy.request({
             method: 'GET',
-            url: 'https://postman-echo.com/basic-auth',
+            url: 'https://postman-echo.com/basic-auth', 
             auth: {
                 username: 'postman',
                 password: 'password',

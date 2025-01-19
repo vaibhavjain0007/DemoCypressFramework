@@ -1,4 +1,4 @@
-import { reviewText, reviewTitle } from "../support/constants";
+import { reviewText, reviewTitle, successMsg } from "../support/constants";
 import { TimeFilter } from "../support/enum/Utils";
 import { AccountAndSubaccountPage } from "../support/pages/AccountAndSubaccountPage";
 
@@ -10,11 +10,8 @@ describe('Amazon Product Review and Rating', () => {
         cy.login(Cypress.env('username'), Cypress.env('password'))
     })
 
-    beforeEach(() => {
-        cy.visit('/')
-    });
-
     it('Should allow a user to submit a product review and verify it', () => {
+        cy.visit('/')
         // Navigate to "Your Orders" and apply time filter
         accountPage.navigateToYourOrders();
         accountPage.openTimeFitlerPopover();
@@ -31,6 +28,7 @@ describe('Amazon Product Review and Rating', () => {
         accountPage.submitReview();
 
         // Validate the review was submitted
-        accountPage.validateReviewSubmission();
+        accountPage.validateReviewSubmission(successMsg);
+        // assert multiple things
     });
 });

@@ -1,74 +1,49 @@
-class LoginPage {
-    // Locators
-    get userName() {
-        return cy.get('#ap_email')
-    }
+const selectors = {
+    username: '[id^=ap_email]',
+    continueBtn: '#continue',
+    password: '#ap_password',
+    signInBtn: '#signInSubmit',
+    signInLabel: '.a-box>div h1',
+    blankUsernameErr: '#auth-email-missing-alert>div div',
+    blankPasswordErr: '#auth-password-missing-alert>div div',
+    WrongUserPassErr: '[id*="auth-error"] span'
+}
 
-    get continueBtn() {
-        return cy.get('#continue')
-    }
-
-    get password() {
-        return cy.get('#ap_password')
-    }
-
-    get signInBtn() {
-        return cy.get('#signInSubmit')
-    }
-
-    get signInLabel() {
-        return cy.get('.a-box>div h1')
-    }
-
-    get blankUserNameErrMsg() {
-        return cy.get('#auth-email-missing-alert>div div')
-    }
-
-    get blankPasswordErrMsg() {
-        return cy.get('#auth-password-missing-alert>div div')
-    }
-
-    get wrongUsernameOrPasswordErrMsg() {
-        return cy.get('[id*="auth-error"] span')
-    }
-
-    // Actions
+export class LoginPage {
     enterUserName(username) {
-        this.userName.type(username)
+        cy.get(selectors.username).type(username)
     }
 
     enterPassword(password) {
-        this.password.type(password)
+        cy.get(selectors.password).type(password)
     }
 
     clickContinueBtn() {
-        this.continueBtn.click()
+        cy.get(selectors.continueBtn).click()
     }
 
     clickSignInBtn() {
-        this.signInBtn.click()
+        cy.get(selectors.signInBtn).click()
     }
 
     verifyBlankUserIDErrMsg(blankUsernameErrMsg){
-        return this.blankUserNameErrMsg.invoke('text').then((getBlankUsernameErr) =>{
+        return cy.get(selectors.blankUsernameErr).invoke('text').then((getBlankUsernameErr) =>{
             getBlankUsernameErr = getBlankUsernameErr.trim()
                 expect(getBlankUsernameErr).to.have.equal(blankUsernameErrMsg);
         });
     }
 
     verifyBlankPasswordErrMsg(blankPasswordErrMsg){
-        this.blankPasswordErrMsg.invoke('text').then((getBlankPasswordErr) => {
+        cy.get(selectors.blankPasswordErr).invoke('text').then((getBlankPasswordErr) => {
             getBlankPasswordErr = getBlankPasswordErr.trim();
             expect(getBlankPasswordErr).to.have.equal(blankPasswordErrMsg);
         })
     }
 
     verifyWrongUsernameOrPasswordErrMsg(wrongUsrOrPswdErrMsg){
-        this.wrongUsernameOrPasswordErrMsg.invoke('text').then((wrongErrorMessage) => {
+        cy.get(selectors.WrongUserPassErr).invoke('text').then((wrongErrorMessage) => {
             wrongErrorMessage = wrongErrorMessage.trim();
             expect(wrongErrorMessage).to.have.equal(wrongUsrOrPswdErrMsg)
         });
     }
 }
-
-export default LoginPage;
