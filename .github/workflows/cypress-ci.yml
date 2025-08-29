@@ -2,9 +2,9 @@ name: Cypress Tests CI
 
 on:
   push:
-    branches: [ main, develop ]    # Run on pushes to main & develop
-  pull_request:
-    branches: [ main, develop ]    # Also run for PRs
+    branches: [ master ]    # Run on pushes to main & develop
+  # pull_request:
+  #   branches: [ main, develop ]    # Also run for PRs
 
 jobs:
   cypress-tests:
@@ -21,15 +21,6 @@ jobs:
     #     with:
     #       node-version: '20'
 
-      # 3. Cache node_modules for faster builds
-    #   - name: Cache node modules
-    #     uses: actions/cache@v3
-    #     with:
-    #       path: ~/.npm
-    #       key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    #       restore-keys: |
-    #         ${{ runner.os }}-node-
-
       # 4. Install dependencies
       - name: Install dependencies
         run: npm ci
@@ -42,11 +33,7 @@ jobs:
       # 6. Run Cypress tests inside Docker container
       - name: Run Cypress tests
         run: |
-          docker run --rm \
-            -v ${{ github.workspace }}/cypress/reports:/app/cypress/reports \
-            -v ${{ github.workspace }}/cypress/videos:/app/cypress/videos \
-            -v ${{ github.workspace }}/cypress/screenshots:/app/cypress/screenshots \
-            my-cypress-tests
+          docker run --rm my-cypress-tests
 
       # 7. Upload test artifacts (videos, screenshots, reports)
     #   - name: Upload Cypress Artifacts
@@ -57,24 +44,3 @@ jobs:
     #         cypress/reports
     #         cypress/videos
     #         cypress/screenshots
-
-  # (Optional) Email Notifications
-#   notify:
-#     needs: cypress-tests
-#     runs-on: ubuntu-latest
-#     if: failure()
-#     steps:
-#       - name: Send Email on Failure
-#         uses: dawidd6/action-send-mail@v3
-#         with:
-#           server_address: ${{ secrets.SMTP_SERVER }}
-#           server_port: ${{ secrets.SMTP_PORT }}
-#           username: ${{ secrets.SMTP_USER }}
-#           password: ${{ secrets.SMTP_PASS }}
-#           subject: "Cypress Tests Failed - ${{ github.repository }}"
-#           to: yourteam@company.com
-#           from: ci-bot@company.com
-#           body: |
-#             Cypress tests failed on branch: ${{ github.ref }}
-#             Commit: ${{ github.sha }}
-#             Check GitHub Actions for details.
