@@ -4,7 +4,13 @@ FROM cypress/included:15.0.0
 # Set working directory
 WORKDIR /e2e
 
-# Copy everything into container
+# Copy package files first (to cache dependencies separately from test code)
+COPY package.json package-lock.json* ./
+
+# Install your project dependencies (like exceljs, mochawesome, etc.)
+RUN npm ci
+
+# Copy the rest of your Cypress project (tests, config, etc.)
 COPY . .
 
 # Default command: run Cypress tests
