@@ -1,16 +1,28 @@
-# Base image
-FROM cypress/included:latest
+# Cypress included image (version includes Cypress + browsers)
+FROM cypress/included:15.0.0
 
 # Set working directory
-WORKDIR /app
+WORKDIR /e2e
 
-# Copy package.json first for caching
-COPY package*.json ./
-# Copy rest of the project
+# Copy everything into container
 COPY . .
 
-# Install dependencies
-RUN npm install
+# Default command: run Cypress tests
+CMD ["cypress", "run"]
 
-# Run tests by default
-ENTRYPOINT ["npx", "cypress", "run"]
+# # Base image
+# FROM cypress/included:15.0.0
+
+# # Set working directory
+# WORKDIR /app
+
+# # Copy package.json first for caching
+# COPY package*.json ./
+# # Copy rest of the project
+# COPY . .
+
+# # Install dependencies
+# RUN npm install
+
+# # Run tests by default
+# ENTRYPOINT ["npx", "cypress", "run"]
