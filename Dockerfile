@@ -8,7 +8,7 @@ WORKDIR /e2e
 COPY . .
 
 # Default command: run Cypress tests
-CMD ["cypress", "run"]
+CMD ["cypress", "run", "--spec", "cypress/e2e/APITesting/Authentications.js"]
 
 # # Base image
 # FROM cypress/included:15.0.0
