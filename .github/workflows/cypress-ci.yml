@@ -28,7 +28,7 @@ jobs:
       # 5. Build Docker image for Cypress
       - name: Build Docker image
         run: |
-          docker build -t my-cypress-tests -f docker/Dockerfile .
+          docker build -t my-cypress-tests -f Dockerfile .
 
       # 6. Run Cypress tests inside Docker container
       - name: Run Cypress tests
