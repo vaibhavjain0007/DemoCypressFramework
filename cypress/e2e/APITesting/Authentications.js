@@ -30,7 +30,7 @@ describe ('authentications', () => {
     })
 
     it ('bearer token authentication', () => {
-        const token = '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';
+        const token = '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';
         cy.request({
             method: 'GET',
             url: 'https://api.github.com/user/repos',
