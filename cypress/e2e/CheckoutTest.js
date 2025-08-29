@@ -1,8 +1,8 @@
-import { CartPage } from "../support/pages/CartPage";
-import { CheckoutPage } from "../support/pages/CheckoutPage";
-import { LoginPage } from "../support/pages/LoginPage";
-import { ProductPage } from "../support/pages/ProductPage";
-import { ProductSearchPage } from "../support/pages/ProductSearchPage";
+// import { CartPage } from "../support/pages/CartPage";
+// import { CheckoutPage } from "../support/pages/CheckoutPage";
+// import { LoginPage } from "../support/pages/LoginPage";
+// import { ProductPage } from "../support/pages/ProductPage";
+// import { ProductSearchPage } from "../support/pages/ProductSearchPage";
 
 // const productSearchPage = new ProductSearchPage;
 // const productPage = new ProductPage;
@@ -46,7 +46,6 @@ describe('Amazon.in Product Search, Add to Cart and Checkout Test', function() {
 
         // Fill in the necessary details (address, payment method)
         this.checkoutPage.fillAddressDetails(address);
-        cy.pause()
         this.checkoutPage.validateAddress();
     });
 });

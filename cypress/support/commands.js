@@ -32,8 +32,7 @@ import { LoginPage } from "./pages/LoginPage";
 import { ProductPage } from "./pages/ProductPage";
 import { ProductSearchPage } from "./pages/ProductSearchPage";
 
-beforeEach(function() {
-  // Instantiate page objects for all tests
+beforeEach('instantiate page objects for all tests', function() {
   this.accountPage = new AccountAndSubaccountPage;
   this.cartPage = new CartPage;
   this.checkoutPage = new CheckoutPage;

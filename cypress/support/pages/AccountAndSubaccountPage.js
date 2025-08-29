@@ -11,11 +11,12 @@ const selectors = {
         timeFilter: '#a-autoid-1-announce'
     },
     review: {
-        starRating: ".ryp__star__button",
-        reviewTitle: "#scarface-review-title-label",
-        reviewText: "#scarface-review-text-card-title",
-        submitButton: '[data-hook="ryp-review-submit-button"]',
-        submittedReview: ".ryp__thank-you-title",
+        starRating: "span[class*='starRating']",
+        reviewTitle: "#reviewTitle",
+        reviewText: "#reviewText",
+        submitButton: '.a-button-input',
+        submittedReview: "[data-testid=in-context-ryp__thankyou-text]",
+        subHeaderText: '.in-context-ryp__thankyou-subheader'
     }
 };
 
@@ -26,7 +27,6 @@ export class AccountAndSubaccountPage {
     }
 
     clickWriteReviewButton() {
-        cy.pause()
         return cy.get(selectors.orders.writeReviewButton).first().click();
     }
 
@@ -41,7 +41,6 @@ export class AccountAndSubaccountPage {
     selectTimeFilter(timeFilter) {
         cy.get('.a-popover-inner ul li').each(($el, index, $list) => {
             if ($el.text().includes(timeFilter)) {
-                cy.pause()
                 return cy.wrap($el).click()
             }
         })
@@ -60,8 +59,10 @@ export class AccountAndSubaccountPage {
         return cy.get(selectors.review.submitButton).click();
     }
 
-    validateReviewSubmission(successMsg) {
-        return cy.get(selectors.review.submittedReview)
-            .should('contain', successMsg);
+    validateReviewSubmission(successMsg, successMsgSubheader) {
+        cy.get(selectors.review.submittedReview)
+        .should('contain', successMsg);
+        cy.get(selectors.review.subHeaderText)
+        .should('contain', successMsgSubheader);
     }
 }

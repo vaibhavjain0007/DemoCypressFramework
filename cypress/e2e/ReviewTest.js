@@ -1,8 +1,8 @@
-import { reviewText, reviewTitle, successMsg } from "../support/constants";
+import { reviewText, reviewTitle, successMsg, successMsgSubheader } from "../support/constants";
 import { TimeFilter } from "../support/enum/Utils";
-import { AccountAndSubaccountPage } from "../support/pages/AccountAndSubaccountPage";
+// import { AccountAndSubaccountPage } from "../support/pages/AccountAndSubaccountPage";
 
-const accountPage = new AccountAndSubaccountPage;
+// const accountPage = new AccountAndSubaccountPage;
 
 describe('Amazon Product Review and Rating', () => {
 
@@ -10,25 +10,24 @@ describe('Amazon Product Review and Rating', () => {
         cy.login(Cypress.env('username'), Cypress.env('password'))
     })
 
-    it('Should allow a user to submit a product review and verify it', () => {
-        cy.visit('/')
+    it('Should allow a user to submit a product review and verify it', function () {
         // Navigate to "Your Orders" and apply time filter
-        accountPage.navigateToYourOrders();
-        accountPage.openTimeFitlerPopover();
-        accountPage.selectTimeFilter(TimeFilter.YEAR(2024));
+        cy.visit('/')
+        this.accountPage.navigateToYourOrders();
+        this.accountPage.openTimeFitlerPopover();
+        this.accountPage.selectTimeFilter(TimeFilter.YEAR(2024));
 
         // Click "Write a product review"
-        accountPage.clickWriteReviewButton();
+        this.accountPage.clickWriteReviewButton();
 
         // Rate the product
-        accountPage.rateProduct(5); // 5-star rating
+        this.accountPage.rateProduct(5); // 5-star rating
 
         // Write a review and submit
-        accountPage.writeReview(reviewTitle, reviewText);
-        accountPage.submitReview();
+        this.accountPage.writeReview(reviewTitle, reviewText);
+        this.accountPage.submitReview();
 
         // Validate the review was submitted
-        accountPage.validateReviewSubmission(successMsg);
-        // assert multiple things
+        this.accountPage.validateReviewSubmission(successMsg, successMsgSubheader);
     });
 });
