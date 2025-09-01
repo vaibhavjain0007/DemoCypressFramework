@@ -29,6 +29,7 @@ jobs:
 
       # Upload Mochawesome HTML reports as artifacts
       - name: Upload test report
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
